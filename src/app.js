@@ -6,11 +6,11 @@ import authRoutes from './routes/authRoutes.js';
 const app = express();
 
 // --- Middlewares Globales ---
-app.use(cors()); // Permite que tu Frontend se conecte sin bloqueos
+app.use(cors()); // Permite que el Frontend se conecte sin bloqueos
 app.use(express.json()); // Permite recibir datos en formato JSON
 
 // --- Rutas ---
-// Definimos el prefijo /api/auth para todas tus rutas de usuario
+// Definimos el prefijo /api/auth para todas las rutas de usuario
 app.use('/api/auth', authRoutes);
 
 // Ruta de diagnóstico simple

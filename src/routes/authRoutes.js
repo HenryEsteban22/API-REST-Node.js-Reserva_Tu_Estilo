@@ -30,7 +30,7 @@ router.get('/profile', verificarToken, (req, res) => {
     });
 });
 
-// CRUD Completo (Puedes proteger estas también si deseas)
+// CRUD Completo 
 router.get('/usuarios', verificarToken, obtenerUsuarios);
 router.put('/usuarios/:id', verificarToken, actualizarUsuario);
 router.delete('/usuarios/:id', verificarToken, eliminarUsuario);
