@@ -8,7 +8,7 @@ export const successResponse = (res, message, data = null, statusCode = 200) => 
 
 export const errorResponse = (res, message, statusCode = 500) => {
     res.status(statusCode).json({
-        success: false,
+        ok: false,
         error: message
     });
 };
