@@ -2,30 +2,19 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import authRoutes from './routes/authRoutes.js';
+import citaRoutes from './routes/citaRoutes.js';
 
 const app = express();
 
-// --- Middlewares Globales ---
-app.use(cors()); // Permite que el Frontend se conecte sin bloqueos
-app.use(express.json()); // Permite recibir datos en formato JSON
+app.use(express.json());
+app.use(cors());
 
-// --- Rutas ---
-// Definimos el prefijo /api/auth para todas las rutas de usuario
-app.use('/api/auth', authRoutes);
+// Rutas
+app.use('/api/auth', authRoutes); // Punto 1: Login
+app.use('/api/citas', citaRoutes); // Puntos 3, 4, 5
 
-// Ruta de diagnóstico simple
-app.get('/', (req, res) => {
-    res.send('🚀 Servidor de Reservatuestilo funcionando');
-});
-
-// --- Manejo de errores 404 ---
-app.use((req, res) => {
-    res.status(404).json({ message: "Ruta no encontrada" });
-});
-
-// --- Encender Servidor ---
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-    console.log(`✅ Servidor corriendo en: http://localhost:${PORT}`);
-    console.log(`🔐 JWT Secret cargado correctamente`);
+    console.log(`Servidor de ReservaTuEstilo corriendo en puerto ${PORT}`);
 });
