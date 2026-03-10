@@ -18,4 +18,16 @@ export const cambiarEstado = async (req, res) => {
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
+    
+};
+
+export const obtenerDisponibilidad = async (req, res) => {
+    try {
+        // En un GET los datos vienen por req.query
+        const { barbero_id, fecha } = req.query; 
+        const horas = await citaService.consultarDisponibilidad(barbero_id, fecha);
+        res.json({ disponibilidad: horas });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 };
